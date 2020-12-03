@@ -2,6 +2,7 @@ var express = require('express');
 var config = require('./config');
 var mongoose  = require('mongoose');
 var setupController = require('./controllers/setupcontroller');
+var todoController = require('./controllers/todocontroller');
 
 
 const app = express();
@@ -14,6 +15,7 @@ app.set('view engine', 'ejs');
 
 mongoose.connect(config.getDBConnection());
 setupController(app);
+todoController(app);
 
 app.get('/', function(req, res){
     res.send("Hello from the root application URL");
